@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color: #12160F;
+    color: #F0F2EB;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #1A2016;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #384632;
+    border-radius: 2px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #4B5320;
+  }
+}
+
+/* Subtle Topographic & Grid overlay backgrounds */
+.bg-topo-pattern {
+  background-color: #12160F;
+  background-image: radial-gradient(#384632 0.75px, transparent 0.75px), radial-gradient(#2F3B2A 0.75px, #12160F 0.75px);
+  background-size: 30px 30px;
+  background-position: 0 0, 15px 15px;
+}
+
+.bg-tactical-grid {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(194, 178, 128, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(194, 178, 128, 0.05) 1px, transparent 1px);
+}
+
+/* Corner-notch Tactical Panel styling */
+.tactical-panel {
+  position: relative;
+  background: #1E251A;
+  border: 1px solid #384632;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.tactical-panel::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  border-top: 2px solid #C2B280;
+  border-left: 2px solid #C2B280;
+}
+
+.tactical-panel::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 8px;
+  height: 8px;
+  border-bottom: 2px solid #C2B280;
+  border-right: 2px solid #C2B280;
+}

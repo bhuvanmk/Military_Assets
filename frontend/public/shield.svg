@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <!-- Outer Tactical Shield Shield -->
+  <polygon points="50,5 92,22 92,58 50,95 8,58 8,22" fill="#2F3B2A" stroke="#C2B280" stroke-width="4" stroke-linejoin="round"/>
+  <!-- Inner Rim -->
+  <polygon points="50,13 84,27 84,55 50,85 16,55 16,27" fill="#1A2016" stroke="#4B5320" stroke-width="2"/>
+  <!-- Tactical Center Star -->
+  <polygon points="50,25 57,40 73,42 61,54 65,70 50,61 35,70 39,54 27,42 43,40" fill="#C2B280" stroke="#D8CBA0" stroke-width="1.5"/>
+  <!-- Precision Crosshairs -->
+  <line x1="50" y1="18" x2="50" y2="24" stroke="#D8CBA0" stroke-width="2"/>
+  <line x1="50" y1="62" x2="50" y2="68" stroke="#D8CBA0" stroke-width="2"/>
+  <line x1="22" y1="48" x2="28" y2="48" stroke="#D8CBA0" stroke-width="2"/>
+  <line x1="72" y1="48" x2="78" y2="48" stroke="#D8CBA0" stroke-width="2"/>
+</svg>
