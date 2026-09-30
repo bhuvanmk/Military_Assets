@@ -1,0 +1,14 @@
+# Git
+.git
+.gitignore
+
+# Target & Builds
+target/
+*.jar
+*.war
+
+# Logs & temp
+*.log
+.mvn/
+.idea/
+*.iml

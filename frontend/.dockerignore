@@ -1,0 +1,16 @@
+# Git
+.git
+.gitignore
+
+# Node & Build artifacts
+node_modules/
+dist/
+dist-ssr/
+*.local
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.idea/
+.vscode/
