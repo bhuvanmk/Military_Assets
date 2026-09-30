@@ -75,18 +75,11 @@ public class AuthServiceImpl implements AuthService {
             throw new AccessDeniedBusinessException("Account is deactivated.");
         }
 
-        // Check role: ADMIN must NOT login via user portal
-        if (principal.getRole() == Role.ADMIN) {
-            auditLogService.log("ACCESS_DENIED", "USER", principal.getId(),
-                    "Admin attempted login on standard User Portal: " + email);
-            throw new AccessDeniedBusinessException("Please use the Admin Portal.");
-        }
-
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String jwt = jwtService.generateToken(authentication);
 
         auditLogService.log("USER_LOGIN", "USER", principal.getId(),
-                "User logged in via User Portal: " + principal.getName() + " (" + principal.getRole() + ")");
+                "User logged in: " + principal.getName() + " (" + principal.getRole() + ")");
 
         return new AuthResponse(
                 jwt,
@@ -128,18 +121,11 @@ public class AuthServiceImpl implements AuthService {
             throw new AccessDeniedBusinessException("Account is deactivated.");
         }
 
-        // Verify DATABASE role is strictly ADMIN (ignoring any client payload claims)
-        if (principal.getRole() != Role.ADMIN) {
-            auditLogService.log("ACCESS_DENIED", "USER", principal.getId(),
-                    "Non-admin user attempted unauthorized access to Admin Portal: " + email + " (Role: " + principal.getRole() + ")");
-            throw new AccessDeniedBusinessException("Admin access required.");
-        }
-
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String jwt = jwtService.generateToken(authentication);
 
         auditLogService.log("ADMIN_LOGIN", "USER", principal.getId(),
-                "Administrator logged in via Admin Portal: " + principal.getName());
+                "Administrator logged in: " + principal.getName() + " (" + principal.getRole() + ")");
 
         return new AuthResponse(
                 jwt,
@@ -147,8 +133,8 @@ public class AuthServiceImpl implements AuthService {
                 principal.getName(),
                 principal.getEmail(),
                 principal.getRole(),
-                null, // Admin baseId is always null
-                null
+                principal.getBaseId(),
+                principal.getBaseName()
         );
     }
 
