@@ -77,16 +77,19 @@ public class DataInitializer implements CommandLineRunner {
                 equipmentTypeRepository.save(new EquipmentType(null, "Protective Equipment", "Protective Gear", "Sets", "Tactical vests", true)));
 
         // 4. Seed Development Accounts
-        // ADMIN: admin@gmail.com / Admin@123 (base_id MUST be null)
+        // ADMIN: admin@gmail.com / Admin@123 (base_id MUST be null, role MUST be ADMIN)
         User admin = userRepository.findByEmail("admin@gmail.com").orElse(null);
         if (admin == null) {
             admin = new User(null, "Major General Marcus Vance", "admin@gmail.com", passwordEncoder.encode("Admin@123"), Role.ADMIN, null, true);
             userRepository.save(admin);
+            logger.info("Created Admin account: admin@gmail.com / Admin@123");
         } else {
             admin.setPassword(passwordEncoder.encode("Admin@123"));
+            admin.setRole(Role.ADMIN);
             admin.setBase(null);
             admin.setActive(true);
             userRepository.save(admin);
+            logger.info("Reset and verified Admin account: admin@gmail.com / Admin@123");
         }
 
         // BASE_COMMANDER: commander1@example.com / Commander@123 (assigned to Alpha Base)
